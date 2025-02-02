@@ -9,14 +9,14 @@ class BaseTool(ABC):
     def __init__(self, llm: BaseLLM):
         self.llm = llm
 
-    @abstractmethod
     @property
+    @abstractmethod
     def name(self) -> str:
         """The name of the tool. Setting this as an abstract property so ruff will yell when not set"""
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def description(self) -> str:
         """The description of the tool. Setting this as an abstract property so ruff will yell when not set.
         

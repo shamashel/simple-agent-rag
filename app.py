@@ -27,7 +27,6 @@ if prompt := st.chat_input("Message RAGBot"):
     st.session_state.messages.append(Message(role="user", content=prompt))
     with st.chat_message("assistant"):
         response = st.write_stream(AGENT.astream(
-            {"input": prompt},
-            config={"configurable": {"session_id": "foo"}}
+            {"input": prompt, "chat_history": messages_to_chat_history(st.session_state.messages)},
         ))
     st.session_state.messages.append({"role": "assistant", "content": response})

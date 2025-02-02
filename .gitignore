@@ -3,3 +3,4 @@ vector_dbs/*
 .git
 .vscode
 .env
+**.pyc

@@ -1,4 +1,5 @@
 from langchain.tools.retriever import create_retriever_tool
+from langchain_community.document_loaders import DirectoryLoader
 from langchain_core.documents import Document
 from langchain_core.tools import Tool
 from langchain_chroma import Chroma
@@ -10,13 +11,15 @@ from env import ENV
 from tools.base_tool import BaseTool
 from utils import ROOT_DIR, VECTOR_DBS_PATH, build_chroma_db
 
-__CHROMA_PATH = os.path.join(VECTOR_DBS_PATH, "knowledgebase_search_chromadb")
-__KNOWLEDGEBASE_PATH = os.path.join(ROOT_DIR, "knowledgebase")
+_CHROMA_PATH = os.path.join(VECTOR_DBS_PATH, "knowledgebase_search_chromadb")
+_KNOWLEDGEBASE_PATH = os.path.join(ROOT_DIR, "knowledgebase")
 
 class KnowledgebaseSearch(BaseTool):
+    @property
     def name(self) -> str:
         return f"Knowledgebase Search for {ENV.COMPANY_NAME}"
 
+    @property
     def description(self) -> str:
         return textwrap.dedent(f"""
         Used to search the internal documents of {ENV.COMPANY_NAME}.
@@ -31,16 +34,22 @@ class KnowledgebaseSearch(BaseTool):
         store = self.__setup_datastore()
         return create_retriever_tool(store.as_retriever(), self.name, self.description)
 
-    def __setup_datastore(self):
+    def __setup_datastore(self) -> Chroma:
         """Set up ChromaDB and populate with PDF documents if needed."""
-        if os.path.exists(__CHROMA_PATH):
-            store = build_chroma_db(__CHROMA_PATH, retain=True)
+        if os.path.exists(_CHROMA_PATH):
+            store = build_chroma_db(_CHROMA_PATH, retain=True)
         else:
-            store = build_chroma_db(__CHROMA_PATH, retain=True)
+            store = build_chroma_db(_CHROMA_PATH, retain=True)
             self.__add_knowledgebase_to_store(store)
+        return store
     
     def __add_knowledgebase_to_store(self, store: Chroma) -> None:
-        loader = PyMuPDFLoader(file_path=__KNOWLEDGEBASE_PATH, extract_tables="markdown")
+        loader = DirectoryLoader(
+            path=_KNOWLEDGEBASE_PATH,
+            glob="*.pdf",
+            loader_cls=PyMuPDFLoader,
+            loader_kwargs={"extract_tables": "markdown"}
+        )
         docs: list[Document] = []
         for doc in loader.lazy_load():
             docs.append(doc)

@@ -1,18 +1,16 @@
 import textwrap
-from langchain.retrievers.web_research import WebResearchRetriever
+from langchain.retrievers import ArxivRetriever
 from langchain.tools.retriever import create_retriever_tool
 from langchain_core.tools import Tool
-import os
 
 from tools.base_tool import BaseTool
-from utils import VECTOR_DBS_PATH, build_chroma_db
-
-__CHROMA_PATH = os.path.join(VECTOR_DBS_PATH, "arxiv_search_chromadb")
 
 class ArxivSearch(BaseTool):
+    @property
     def name(self) -> str:
         return "arXiv Research Paper Search"
 
+    @property
     def description(self) -> str:
         return textwrap.dedent("""
         Used to search for research papers posted on Cornell's arXiv platform.
@@ -29,9 +27,8 @@ class ArxivSearch(BaseTool):
         """)
 
     def build(self) -> Tool:
-        store = build_chroma_db
-        retriever = WebResearchRetriever.from_llm(
-            vectorstore=store,
-            llm=self.llm
+        retriever = ArxivRetriever(
+            load_max_docs=10,
+            get_full_documents=True
         )
         return create_retriever_tool(retriever, self.name, self.description)
