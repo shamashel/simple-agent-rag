@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "rag-with-search"
+version = "0.1.0"
+description = "Simple RAG with Google Search capabilities"
+authors = ["Mike Gabriel"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain = "^0.3.17"
+langchain-chroma = "^0.2.1"
+langchain-community = "^0.3.16"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
