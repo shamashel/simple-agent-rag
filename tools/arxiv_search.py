@@ -13,6 +13,9 @@ class ArxivSearch(BaseTool):
     @property
     def description(self) -> str:
         return textwrap.dedent("""
+        If the user asks any follow-up questions about a paper, use the information you've previously retrieved to answer,
+        rather than calling this tool again.
+
         Used to search for research papers posted on Cornell's arXiv platform.
 
         arXiv contains research related to the following subjects:

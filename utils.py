@@ -12,4 +12,4 @@ def build_chroma_db(path: str, retain=False):
     """Build/Rebuild an instance of ChromaDB in the given path with OpenAI embeddings"""
     if not retain and os.path.exists(path):
         os.remove(path)
-    return Chroma(persist_directory=path, embedding_function=OpenAIEmbeddings)
+    return Chroma(persist_directory=path, embedding_function=OpenAIEmbeddings())

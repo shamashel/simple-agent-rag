@@ -3,7 +3,6 @@ from langchain.agents.agent import AgentExecutor
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.agents.format_scratchpad.openai_tools import format_to_openai_tool_messages
 from langchain.agents.output_parsers.openai_tools import OpenAIToolsAgentOutputParser
-from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_openai import ChatOpenAI
 from tools import get_all_tools
 
