@@ -13,7 +13,7 @@ All documents included in the knowledgebase of this repository were access via p
 ## Setup
 
 1. Ensure Python 3.12 is available on your system (`pyenv` recommended)
-2. Ensure [poetry is install on your system](https://python-poetry.org/docs/)
+2. Ensure [poetry is installed on your system](https://python-poetry.org/docs/)
 3. Run `poetry install`
 4. Set up a `.env` file using `.env.example` as an example
     - An OpenAI API key is required for general functionality
