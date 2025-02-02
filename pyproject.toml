@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "rag-with-search"
 version = "0.1.0"
-description = "Simple RAG with Google Search capabilities"
+description = "Simple RAG with arXiv and Google Search capabilities"
 authors = ["Mike Gabriel"]
 readme = "README.md"
 
