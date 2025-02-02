@@ -31,7 +31,6 @@ All documents included in the knowledgebase of this repository were access via p
 - The local knowledgebase was included to showcase an example commonly found in real-world chatbots
 - The Google tool was included to showcase integration with third party sources
 - The arXiv tool was included as a backup for the Google tool, in case whoever runs this project does not have a Google API key
-    - Also because I added the google tool before realizing you need an API key for it
 
 ### Use of LangChain
 
