@@ -10,5 +10,20 @@ class BaseTool(ABC):
         self.llm = llm
 
     @abstractmethod
+    @property
+    def name(self) -> str:
+        """The name of the tool. Setting this as an abstract property so ruff will yell when not set"""
+        pass
+
+    @abstractmethod
+    @property
+    def description(self) -> str:
+        """The description of the tool. Setting this as an abstract property so ruff will yell when not set.
+        
+        Given that multiline strings with hanging indents are likely to occur, use of `textwrap.dedent` is recommended.
+        """
+        pass
+
+    @abstractmethod
     def build(self) -> Tool:
         pass
