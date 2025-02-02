@@ -1,2 +1,4 @@
-vector_dbs
+vector_dbs/*
+!vector_dbs/.gitkeep
 .git
+.vscode

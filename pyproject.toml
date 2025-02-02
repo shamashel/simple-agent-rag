@@ -10,6 +10,7 @@ python = "^3.12"
 langchain = "^0.3.17"
 langchain-chroma = "^0.2.1"
 langchain-community = "^0.3.16"
+pydantic = "^2.10.6"
 
 
 [build-system]
