@@ -8,7 +8,7 @@ This means tool calls will be significantly less effective than ones done via a 
 
 ## Important Note
 
-All documents included in the knowledgebase of this repository were access via publicly available means. They were included in good faith. If you would like to request these documents be taken down, please raise an issue or PR with a message stating such and I will remove them ASAP.
+All documents included in the knowledgebase of this repository were accessed via publicly available means. They were included in good faith. If you would like to request these documents be taken down, please raise an issue or PR with a message stating such and I will remove them ASAP.
 
 ## Setup
 
