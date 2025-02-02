@@ -22,7 +22,7 @@ All documents included in the knowledgebase of this repository were access via p
 ## How to run
 
 - Run `poetry run streamlit run app.py`
-- Try asking SS&C's financial report, black diamond service, or GlobeOp division
+- Try asking SS&C's financial report, Black Diamond platform, or GlobeOp division
 
 ## Choices made
 
