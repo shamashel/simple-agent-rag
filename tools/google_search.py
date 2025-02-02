@@ -13,7 +13,7 @@ _CHROMA_PATH = os.path.join(VECTOR_DBS_PATH, "google_search_chromadb")
 class GoogleSearch(BaseTool):
     @property
     def name(self) -> str:
-        return "Google Search"
+        return "Google_Search"
 
     @property
     def description(self) -> str:

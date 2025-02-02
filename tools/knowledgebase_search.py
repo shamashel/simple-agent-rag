@@ -17,7 +17,7 @@ _KNOWLEDGEBASE_PATH = os.path.join(ROOT_DIR, "knowledgebase")
 class KnowledgebaseSearch(BaseTool):
     @property
     def name(self) -> str:
-        return f"Knowledgebase Search for {ENV.COMPANY_NAME}"
+        return "Knowledgebase_Search"
 
     @property
     def description(self) -> str:

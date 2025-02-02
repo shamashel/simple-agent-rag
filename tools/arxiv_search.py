@@ -8,7 +8,7 @@ from tools.base_tool import BaseTool
 class ArxivSearch(BaseTool):
     @property
     def name(self) -> str:
-        return "arXiv Research Paper Search"
+        return "arXiv_Research_Paper_Search"
 
     @property
     def description(self) -> str:
