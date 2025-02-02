@@ -3,6 +3,8 @@ from langchain.agents.agent import AgentExecutor
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.agents.format_scratchpad.openai_tools import format_to_openai_tool_messages
 from langchain.agents.output_parsers.openai_tools import OpenAIToolsAgentOutputParser
+from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
 from tools import get_all_tools
 
@@ -40,5 +42,8 @@ def build_agent(verbose: bool = True):
         | llm
         | OpenAIToolsAgentOutputParser()
     )
-    return AgentExecutor(agent=agent, tools=tools, verbose=verbose)
+    history = ChatMessageHistory()
+    agent_with_history = RunnableWithMessageHistory(agent, lambda s: history, input_messages_key="input", history_messages_key="chat_history")
+    return AgentExecutor(agent=agent_with_history, tools=tools, verbose=verbose)
 
+AGENT = build_agent()

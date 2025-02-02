@@ -11,6 +11,10 @@ langchain = "^0.3.17"
 langchain-chroma = "^0.2.1"
 langchain-community = "^0.3.16"
 pydantic = "^2.10.6"
+langchain-openai = "^0.3.3"
+pydantic-settings = "^2.7.1"
+pymupdf = "^1.25.2"
+streamlit = "^1.41.1"
 
 
 [build-system]
